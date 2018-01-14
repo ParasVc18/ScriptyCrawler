@@ -135,9 +135,14 @@ def follow_given_user_followers(browser,
 	
 	
 	following_link = browser.find_elements_by_xpath(
-		'//a[@href="/' + user_name + '/followers/"]')
-	following_link[0].send_keys("\n")
-		
+		"//a[starts-with(@href,'/p/Bd')]")
+	following_link[1].send_keys("\n")
+	
+	sleep(5)
+
+	likes_link = browser.find_elements_by_xpath(
+		"//a[@class='_nzn1h _gu6vm']")
+	likes_link[0].send_keys("\n")
 
 	personFollowed = follow_through_dialog(browser,
 										   user_name,
@@ -177,7 +182,7 @@ def follow_through_dialog(browser,
 
 	# find dialog box
 	dialog = browser.find_element_by_xpath(
-	  "//div[text()='Followers' or text()='Following']/following-sibling::div")
+	  "//div[@class='_p4iax']")
 
 	# scroll down the page
 	scroll_bottom(browser, dialog, allfollowing)
@@ -301,7 +306,7 @@ ActionChains(browser).move_to_element(login_button).click().perform()
 
 sleep(5)
 
-follow_user_followers(['pranavkalraa', 'abhimanyudhall', 'pranavkhanna_1997'], amount=10, randomize=False)
+follow_user_followers(['pranavkalraa', 'abhimanyudhall', 'pranavkhanna_1997'], amount=500, randomize=False)
 
 # close the browser window
 browser.quit()

@@ -77,7 +77,7 @@ def sleep(t, custom_percentage=None):
 
 def follow_user_followers(    
 							  usernames,
-							  amount=10,
+							  amount,
 							  randomize=False,
 							  interact=False,
 							  sleep_delay=600):
@@ -136,7 +136,7 @@ def follow_given_user_followers(browser,
 	
 	following_link = browser.find_elements_by_xpath(
 		"//a[starts-with(@href,'/p/Bd')]")
-	following_link[1].send_keys("\n")
+	following_link[2].send_keys("\n")
 	
 	sleep(5)
 
@@ -182,7 +182,7 @@ def follow_through_dialog(browser,
 
 	# find dialog box
 	dialog = browser.find_element_by_xpath(
-	  "//div[@class='_p4iax']")
+	  "//div[contains(@class,'_ms7sh') and contains(@class,'_41iuk')]")
 
 	# scroll down the page
 	scroll_bottom(browser, dialog, allfollowing)
@@ -195,6 +195,8 @@ def follow_through_dialog(browser,
 	person_list = []
 	abort = False
 	total_list = len(follow_buttons)
+
+	
 
 	# scroll down if the generated list of user to follow is not enough to
 	# follow amount set
@@ -217,7 +219,7 @@ def follow_through_dialog(browser,
 
 	if amount >= total_list:
 		amount = total_list
-		
+	
 
 	# follow loop
 	hasSlept = False
@@ -306,7 +308,7 @@ ActionChains(browser).move_to_element(login_button).click().perform()
 
 sleep(5)
 
-follow_user_followers(['pranavkalraa', 'abhimanyudhall', 'pranavkhanna_1997'], amount=500, randomize=False)
+follow_user_followers(['abhimanyudhall', 'pranavkalraa', 'pranavkhanna_1997'], amount=500, randomize=False)
 
 # close the browser window
 browser.quit()

@@ -25,8 +25,8 @@ import logging
 browser = webdriver.Chrome()
 browser.implicitly_wait(30)
 browser.maximize_window()
-username='parasvc18'
-password= 'vandanach12'
+username=''
+password= ''
 
 STDEV = 0.5
 sleep_percentage = 1
@@ -124,7 +124,7 @@ def follow_given_user_followers(browser,
 								logger,
 								follow_times):
 
-	browser.get('https://www.instagram.com/' + user_name)
+	browser.get('https://' + user_name)
 	# update server calls
 	 
 	#  check how many poeple are following this user.
@@ -308,7 +308,7 @@ ActionChains(browser).move_to_element(login_button).click().perform()
 
 sleep(5)
 
-follow_user_followers(['abhimanyudhall', 'pranavkalraa', 'pranavkhanna_1997'], amount=500, randomize=False)
+follow_user_followers(['', '', ''], amount=0, randomize=False)
 
 # close the browser window
 browser.quit()
